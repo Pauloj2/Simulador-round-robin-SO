@@ -1,7 +1,7 @@
+***
 # Simulação de Algoritmos de Escalonamento - Sistemas Operacionais
-
-Este repositório contém a implementação de algoritmos de escalonamento de processos como parte do trabalho avaliativo da disciplina **Sistemas Operacionais** no **Instituto Federal do Triângulo Mineiro (IFTM)**.
-
+Este repositório contém a implementação de algoritmo de escalonamento de processos como parte do trabalho avaliativo da disciplina **Sistemas Operacionais** no **Instituto Federal do Triângulo Mineiro (IFTM)**.
+<br><br>
 ## 🎯 Objetivo
 O objetivo deste projeto é simular o funcionamento do algoritmo de escalonamento de processos:
 - **Round-Robin (RR)**: Um algoritmo de escalonamento com prioridade igual e tempo de quantum fixo.
@@ -22,7 +22,7 @@ A simulação deve demonstrar:
 
 ---
 
-## 🛠️ Conceito do algoritmo de escalonamento de processo Round-Robin
+## 💡 Conceito do algoritmo de escalonamento de processo Round-Robin
 
 <div align="center">
   <img src="https://github.com/user-attachments/assets/fc7a2d91-7cae-4fbe-9f23-983dd94d3e4f" alt="Descrição do GIF">
