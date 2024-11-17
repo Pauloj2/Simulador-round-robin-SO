@@ -49,6 +49,18 @@ A simulação deve demonstrar:
 
 ---
 
+## 📊 Fluxograma
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/6067ca2a-4327-4257-82da-2887f38c8014" alt="Fluxograma Round Robin" width="80%">
+</div>
+<br> </br>
+
+  - **🛠️ Ferramenta utilizada para fazer o Fluxograma**
+    - [Blocks AndArrows](https://www.blocksandarrows.com/dashboard)
+    
+---
+
 ## 📜 Relatório
 - O relatório em PDF contendo a introdução, descrição do algoritmo, prints do programa em execução e análise de resultados está disponível na pasta **A Fazer**
 
