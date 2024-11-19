@@ -50,6 +50,37 @@ struct Lista {
         return primeiro == NULL;
     }
 
+    // Ordena os processos por tempo de chegada para ser executado da forma correta
+    void ordenarPorChegada() {
+        if (vazia() || !primeiro->proximo) return;
+
+        No* ordenada = NULL; // Lista auxiliar para manter os nós ordenados
+        No* atual = primeiro;
+
+        while (atual != NULL) {
+            No* proximo = atual->proximo; // Armazena o próximo nó
+            if (!ordenada || atual->tempoChegada < ordenada->tempoChegada) {
+                atual->proximo = ordenada;
+                ordenada = atual;
+            } else {
+                No* aux = ordenada;
+                while (aux->proximo && aux->proximo->tempoChegada <= atual->tempoChegada) {
+                    aux = aux->proximo;
+                }
+                atual->proximo = aux->proximo;
+                aux->proximo = atual;
+            }
+            atual = proximo;
+        }
+
+        // Atualiza o ponteiro da lista para a nova lista ordenada
+        primeiro = ordenada;
+        // Atualiza o ponteiro "ultimo"
+        ultimo = primeiro;
+        while (ultimo && ultimo->proximo) {
+            ultimo = ultimo->proximo;
+        }
+    }
 };
 
 
