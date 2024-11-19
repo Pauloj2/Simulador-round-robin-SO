@@ -90,7 +90,7 @@ Sinta-se à vontade para usar e modificar o código conforme necessário.
 ## Editar quando o Trabalho estiver pronto
 ```plaintext
 .
-├── AlgoritmoRoundRobin.cpp/                # Código fonte do projeto
-├── Relatorio/               # Relatório em PDF e outros documentos
-├── README.md           # Este arquivo
-└── LICENSE             # Licença do projeto
+├── AlgoritmoRoundRobin.cpp/   # Código fonte do projeto
+├── Relatorio/                 # Relatório em PDF e outros documentos
+├── README.md                  # Este arquivo
+└── LICENSE                    # Licença do projeto
