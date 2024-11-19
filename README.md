@@ -2,6 +2,18 @@
 # Simulação de Algoritmos de Escalonamento - Sistemas Operacionais
 Este repositório contém a implementação de algoritmo de escalonamento de processos como parte do trabalho avaliativo da disciplina **Sistemas Operacionais** no **Instituto Federal do Triângulo Mineiro (IFTM)**.
 <br><br>
+
+## 📂 Organização do Repositório
+
+```plaintext
+.
+├── AlgoritmoRoundRobin.cpp/   # Código fonte do projeto
+├── Relatorio/                 # Relatório em PDF
+├── LICENSE                    # Licença do projeto
+└── README.md                  # Este arquivo
+```
+---
+
 ## 🎯 Objetivo
 O objetivo deste projeto é simular o funcionamento do algoritmo de escalonamento de processos:
 - **Round-Robin (RR)**: Um algoritmo de escalonamento com prioridade igual e tempo de quantum fixo.
@@ -84,13 +96,3 @@ Este projeto está licenciado sob a [MIT License](LICENSE).
 Sinta-se à vontade para usar e modificar o código conforme necessário.
 
 ---
-
-## 📂 Organização do Repositório
-
-## Editar quando o Trabalho estiver pronto
-```plaintext
-.
-├── AlgoritmoRoundRobin.cpp/   # Código fonte do projeto
-├── Relatorio/                 # Relatório em PDF e outros documentos
-├── README.md                  # Este arquivo
-└── LICENSE                    # Licença do projeto
