@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
+#include <queue>  // Incluindo a fila para gerenciar os processos prontos
 
 using namespace std;
 
@@ -98,7 +99,7 @@ struct Lista {
     }
 };
 
-//  Esta função para simular o algoritmo Round-Robin
+// Função para simular o algoritmo Round-Robin
 void roundRobin(Lista& lista, int quantum) {
     int tempoAtual = 0;
     int processosRestantes = 0;
@@ -113,53 +114,62 @@ void roundRobin(Lista& lista, int quantum) {
         processosRestantes++;
         atual = atual->proximo;
     }
+
     printf("************************************\n");
     printf("Simulacao Round-Robin\n");
 
+    // Fila para os processos prontos para execução
+    queue<No*> fila;
+
+    // Insere os processos na fila inicial que chegam no tempo 0
+    atual = lista.primeiro;
+    while (atual && atual->tempoChegada <= tempoAtual) {
+        fila.push(atual);
+        atual = atual->proximo;
+    }
+
     while (processosRestantes > 0) {
-        atual = lista.primeiro;
+        if (!fila.empty()) {
+            No* processo = fila.front();
+            fila.pop();
 
-        while (atual) {
-            if (atual->tempoRestante > 0 && atual->tempoChegada <= tempoAtual) {
-                int tempoInicio = tempoAtual;
+            // Processa o quantum ou até o tempo restante do processo
+            int tempoInicio = tempoAtual;
+            int tempoProcessado = (processo->tempoRestante < quantum) ? processo->tempoRestante : quantum;
+            tempoAtual += tempoProcessado;
+            processo->tempoRestante -= tempoProcessado;
 
-                // Processa o quantum ou até o tempo restante
-                int tempoProcessado = (atual->tempoRestante < quantum) ? atual->tempoRestante : quantum;
-                tempoAtual += tempoProcessado;
-                atual->tempoRestante -= tempoProcessado;
-
-                printf("Tempo %d-%d: %s executando\n", tempoInicio, tempoAtual, atual->nomeProcesso.c_str());
-
-                // Registra o processo na ordem de execução
-                for (int i = 0; i < tempoProcessado; i++) {
-                    ordemExecucao[execIndex++] = atual->nomeProcesso;
-                }
-
-                // Verifica se o processo foi finalizado
-                if (atual->tempoRestante == 0) {
-                    processosRestantes--;
-                    printf(" -> %s concluido no tempo %d\n", atual->nomeProcesso.c_str(), tempoAtual);
-                }
+            // Registra a execução do processo
+            printf("Tempo %d-%d: %s executando\n", tempoInicio, tempoAtual, processo->nomeProcesso.c_str());
+            for (int i = 0; i < tempoProcessado; i++) {
+                ordemExecucao[execIndex++] = processo->nomeProcesso;
             }
-            atual = atual->proximo;
-        }
 
-        // Avança o tempo se nenhum processo estiver pronto
-        if (processosRestantes > 0) {
-            int allDelayed = 1;
-            atual = lista.primeiro;
-            while (atual) {
-                if (atual->tempoRestante > 0 && atual->tempoChegada <= tempoAtual) {
-                    allDelayed = 0;
-                    break;
-                }
+            // Adiciona novos processos que chegaram durante a execução
+            while (atual && atual->tempoChegada <= tempoAtual) {
+                fila.push(atual);
                 atual = atual->proximo;
             }
-            if (allDelayed) tempoAtual++;
+
+            // Se o processo ainda não terminou, retorna para o final da fila
+            if (processo->tempoRestante > 0) {
+                fila.push(processo);
+            } else {
+                processosRestantes--;
+                printf(" -> %s concluido no tempo %d\n", processo->nomeProcesso.c_str(), tempoAtual);
+            }
+        } else {
+            // Incrementa o tempo se nenhum processo está pronto
+            tempoAtual++;
+            // Adiciona novos processos que chegaram enquanto o tempo avançava
+            while (atual && atual->tempoChegada <= tempoAtual) {
+                fila.push(atual);
+                atual = atual->proximo;
+            }
         }
     }
 
-    // Exibir a ordem de execução
+    // Exibe a ordem de execução
     printf("************************************\n");
 
     printf("\n--- Ordem de Execucao ---\n");
@@ -175,9 +185,8 @@ void roundRobin(Lista& lista, int quantum) {
     printf("\n--- Fim da Simulacao ---\n");
 }
 
-
 int main() {
-     Lista lista;
+    Lista lista;
     int quantProcessos, quantum;
     printf("===================================================\n");
     printf("    ALGORITMO DE ESCALONAMENTO ROUND-ROBIN (RR)   \n");
@@ -215,7 +224,7 @@ int main() {
     // Chama a função que exibe a lista de processos ordenada
     lista.imprimirLista();
 
-    // chama a função que Executa a simulação do algoritmo Round-Robin
+    // Chama a função que Executa a simulação do algoritmo Round-Robin
     roundRobin(lista, quantum);
 
     return 0;
