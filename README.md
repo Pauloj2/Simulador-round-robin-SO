@@ -7,8 +7,8 @@ Este repositório contém a implementação de algoritmo de escalonamento de pro
 
 ```plaintext
 .
-├── AlgoritmoRoundRobin.cpp/   # Código fonte do projeto
-├── Relatorio/                 # Relatório em PDF
+├── AlgoritmoRoundRobin.cpp    # Código fonte do projeto
+├── Relatorio                  # Relatório em PDF
 ├── LICENSE                    # Licença do projeto
 └── README.md                  # Este arquivo
 ```
@@ -64,7 +64,7 @@ A simulação deve demonstrar:
 ## 📊 Fluxograma
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/6067ca2a-4327-4257-82da-2887f38c8014" alt="Fluxograma Round Robin" width="80%">
+  <img src="https://github.com/user-attachments/assets/b775cad9-774a-4880-b049-08fe2ec81701" alt="Fluxograma Round Robin" width="80%">
 </div>
 <br> </br>
 
