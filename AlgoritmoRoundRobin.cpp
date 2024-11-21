@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
-#include <iostream>
 
 using namespace std;
 
@@ -80,6 +79,22 @@ struct Lista {
         while (ultimo && ultimo->proximo) {
             ultimo = ultimo->proximo;
         }
+    }
+
+    // Exibe os processos na lista
+    void imprimirLista() {
+        No* atual = primeiro;
+        printf("\n");
+        printf("------------------------------------------");
+        printf("\nProcessos ordenados por tempo de chegada\n");
+        printf("------------------------------------------\n");
+        while (atual != NULL) {
+            printf("Processo %s: chegada=%d, duracao=%d\n",
+                   atual->nomeProcesso.c_str(), atual->tempoChegada, atual->tempoUso);
+            atual = atual->proximo;
+        }
+        printf("------------------------------------------");
+        printf("\n\n");
     }
 };
 
