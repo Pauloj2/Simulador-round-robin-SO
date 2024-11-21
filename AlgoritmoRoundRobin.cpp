@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
-#include <queue>  // Incluindo a fila para gerenciar os processos prontos
+#include <queue>  
 
 using namespace std;
 
-// Estrutura de nó para representar um processo
+// Estrutura de nÃ³ para representar um processo
 struct No {
     string nomeProcesso;
     int tempoChegada;
@@ -45,7 +45,7 @@ struct Lista {
         ultimo = novo;
     }
 
-    // Verifica se a lista está vazia
+    // Verifica se a lista estÃ¡ vazia
     bool vazia() {
         return primeiro == NULL;
     }
@@ -54,11 +54,11 @@ struct Lista {
     void ordenarPorChegada() {
         if (vazia() || !primeiro->proximo) return;
 
-        No* ordenada = NULL; // Lista auxiliar para manter os nós ordenados
+        No* ordenada = NULL; // Lista auxiliar para manter os nÃ³s ordenados
         No* atual = primeiro;
 
         while (atual != NULL) {
-            No* proximo = atual->proximo; // Armazena o próximo nó
+            No* proximo = atual->proximo; // Armazena o prÃ³ximo nÃ³
             if (!ordenada || atual->tempoChegada < ordenada->tempoChegada) {
                 atual->proximo = ordenada;
                 ordenada = atual;
@@ -99,17 +99,17 @@ struct Lista {
     }
 };
 
-// Função para simular o algoritmo Round-Robin
+// FunÃ§Ã£o para simular o algoritmo Round-Robin
 void roundRobin(Lista& lista, int quantum) {
     int tempoAtual = 0;
     int processosRestantes = 0;
     No* atual = lista.primeiro;
 
-    // Array para registrar a ordem de execução
+    // Array para registrar a ordem de execuÃ§Ã£o
     string ordemExecucao[1000];
     int execIndex = 0;
 
-    // Conta o número de processos
+    // Conta o nÃºmero de processos
     while (atual) {
         processosRestantes++;
         atual = atual->proximo;
@@ -118,7 +118,7 @@ void roundRobin(Lista& lista, int quantum) {
     printf("************************************\n");
     printf("Simulacao Round-Robin\n");
 
-    // Fila para os processos prontos para execução
+    // Fila para os processos prontos para execuÃ§Ã£o
     queue<No*> fila;
 
     // Insere os processos na fila inicial que chegam no tempo 0
@@ -133,25 +133,25 @@ void roundRobin(Lista& lista, int quantum) {
             No* processo = fila.front();
             fila.pop();
 
-            // Processa o quantum ou até o tempo restante do processo
+            // Processa o quantum ou atÃ© o tempo restante do processo
             int tempoInicio = tempoAtual;
             int tempoProcessado = (processo->tempoRestante < quantum) ? processo->tempoRestante : quantum;
             tempoAtual += tempoProcessado;
             processo->tempoRestante -= tempoProcessado;
 
-            // Registra a execução do processo
+            // Registra a execuÃ§Ã£o do processo
             printf("Tempo %d-%d: %s executando\n", tempoInicio, tempoAtual, processo->nomeProcesso.c_str());
             for (int i = 0; i < tempoProcessado; i++) {
                 ordemExecucao[execIndex++] = processo->nomeProcesso;
             }
 
-            // Adiciona novos processos que chegaram durante a execução
+            // Adiciona novos processos que chegaram durante a execuÃ§Ã£o
             while (atual && atual->tempoChegada <= tempoAtual) {
                 fila.push(atual);
                 atual = atual->proximo;
             }
 
-            // Se o processo ainda não terminou, retorna para o final da fila
+            // Se o processo ainda nÃ£o terminou, retorna para o final da fila
             if (processo->tempoRestante > 0) {
                 fila.push(processo);
             } else {
@@ -159,9 +159,9 @@ void roundRobin(Lista& lista, int quantum) {
                 printf(" -> %s concluido no tempo %d\n", processo->nomeProcesso.c_str(), tempoAtual);
             }
         } else {
-            // Incrementa o tempo se nenhum processo está pronto
+            // Incrementa o tempo se nenhum processo estÃ¡ pronto
             tempoAtual++;
-            // Adiciona novos processos que chegaram enquanto o tempo avançava
+            // Adiciona novos processos que chegaram enquanto o tempo avanÃ§ava
             while (atual && atual->tempoChegada <= tempoAtual) {
                 fila.push(atual);
                 atual = atual->proximo;
@@ -169,7 +169,7 @@ void roundRobin(Lista& lista, int quantum) {
         }
     }
 
-    // Exibe a ordem de execução
+    // Exibe a ordem de execuÃ§Ã£o
     printf("************************************\n");
 
     printf("\n--- Ordem de Execucao ---\n");
@@ -218,13 +218,13 @@ int main() {
         lista.adicionar(string(nome), chegada, uso);
     }
 
-    // Chama a função que ordena os processos por tempo de chegada
+    // Chama a funÃ§Ã£o que ordena os processos por tempo de chegada
     lista.ordenarPorChegada();
 
-    // Chama a função que exibe a lista de processos ordenada
+    // Chama a funÃ§Ã£o que exibe a lista de processos ordenada
     lista.imprimirLista();
 
-    // Chama a função que Executa a simulação do algoritmo Round-Robin
+    // Chama a funÃ§Ã£o que Executa a simulaÃ§Ã£o do algoritmo Round-Robin
     roundRobin(lista, quantum);
 
     return 0;
