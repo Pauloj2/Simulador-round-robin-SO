@@ -80,7 +80,9 @@ A simulação deve demonstrar:
 ---
 
 ## 📜 Relatório
-- O relatório em PDF contendo a introdução, descrição do algoritmo, prints do programa em execução e análise de resultados está disponível na pasta **A Fazer**
+- O relatório em PDF contendo a introdução, descrição do algoritmo, prints do programa em execução e análise de resultados está disponível na pasta
+- RelatorioRound-Robin.pdf 
+https://github.com/Pauloj2/Simulador-round-robin-SO/blob/main/Relatorio%20Round-Robin.pdf
 
 ---
 
