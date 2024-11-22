@@ -49,7 +49,13 @@ A simulação deve demonstrar:
 ## 🧪 Casos de Teste
 
 - **Exemplo : Algoritmo Round-Robin**
-  - Entrada:
+  - **Entrada:**
+    
+    ![Captura de tela 2024-11-22 111719](https://github.com/user-attachments/assets/046d1459-1547-41d0-832e-87532767cb1d)
+    
+  - **Saida:**
+    
+    ![Captura de tela 2024-11-22 113126](https://github.com/user-attachments/assets/0271bc81-5dd4-4ce0-849c-6ba31315317c)
 
 ---
 
