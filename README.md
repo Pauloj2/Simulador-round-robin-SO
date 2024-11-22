@@ -8,9 +8,9 @@ Este repositório contém a implementação de algoritmo de escalonamento de pro
 ```plaintext
 .
 ├── AlgoritmoRoundRobin.cpp    # Código fonte do projeto
-├── Relatorio                  # Relatório em PDF
 ├── LICENSE                    # Licença do projeto
-└── README.md                  # Este arquivo
+├── README.md                  # Este arquivo
+└── Relatorio                  # Relatório em PDF
 ```
 ---
 
