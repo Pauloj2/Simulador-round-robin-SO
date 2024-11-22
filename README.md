@@ -10,7 +10,7 @@ Este repositório contém a implementação de algoritmo de escalonamento de pro
 ├── AlgoritmoRoundRobin.cpp    # Código fonte do projeto
 ├── LICENSE                    # Licença do projeto
 ├── README.md                  # Este arquivo
-└── Relatorio                  # Relatório em PDF
+└── RelatorioRound-Robin.pdf   # Relatório em PDF
 ```
 ---
 
